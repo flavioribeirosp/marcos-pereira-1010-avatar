@@ -390,20 +390,28 @@
       reader.readAsDataURL(file);
     }
 
-    function downloadResult() {
-      const exportCanvas = document.createElement("canvas");
-      exportCanvas.width = canvasSize;
-      exportCanvas.height = canvasSize;
-      const exportCtx = exportCanvas.getContext("2d");
+      function downloadResult() {
+        const exportCanvas = document.createElement("canvas");
+        exportCanvas.width = canvasSize;
+        exportCanvas.height = canvasSize;
+        const exportCtx = exportCanvas.getContext("2d");
 
-      exportCtx.drawImage(photoCanvas, 0, 0);
-      exportCtx.drawImage(overlayCanvas, 0, 0);
+        exportCtx.drawImage(photoCanvas, 0, 0);
+        exportCtx.drawImage(overlayCanvas, 0, 0);
 
-      const link = document.createElement("a");
-      link.href = exportCanvas.toDataURL("image/png");
-      link.download = "avatar-marcos-pereira-1010.png";
-      link.click();
-    }
+        exportCanvas.toBlob(blob => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "avatar-marcos-pereira-1010.png";
+          link.rel = "noopener";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(() => URL.revokeObjectURL(url), 4000);
+        }, "image/png");
+      }
 
     function pointerPosition(event) {
       const rect = stage.getBoundingClientRect();
@@ -482,8 +490,7 @@
     };
 
     photoImg.src = "./assets/foto-exemplo.jpeg";
-    overlayImg.src = "./assets/mascara.png";
-
+        overlayImg.src = "./assets/mascara.jpeg";
     fitCanvasToStage();
   </script>
 </body>

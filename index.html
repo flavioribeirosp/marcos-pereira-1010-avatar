@@ -1,3 +1,490 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#063d80"><title>Meu avatar | Marcos Pereira 1010</title<meta property="og:title" content="Marcos Pereira 1010 — Crie seu Avatar de Campanha"><meta property="og:description" content="Envie sua foto e baixe seu avatar com a máscara Eu Voto Marcos Pereira 1010."><meta property="og:image" content="/assets/foto-exemplo.jpeg"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image">><style>:root{--blue:#063d80;--blue-dark:#032b60;--yellow:#ffe800;--purple:#25177d;--ink:#11213b}*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(180deg,#fff 0%,#edf6fd 100%)}.hero{padding:32px 20px 64px;overflow:hidden}.wrap{width:min(1120px,100%);margin:auto}.brand{display:flex;justify-content:center;align-items:center;gap:12px;color:var(--blue);font-weight:900;font-size:15px;letter-spacing:.7px;text-align:center}.brand .number{color:var(--purple);background:var(--yellow);padding:6px 12px;transform:skew(-8deg);font-size:21px;line-height:1}h1{max-width:810px;margin:32px auto 14px;font-size:clamp(32px,5vw,56px);line-height:1.03;text-align:center;color:var(--blue-dark);letter-spacing:-1.8px}.lead{max-width:650px;margin:0 auto 32px;text-align:center;font-size:18px;line-height:1.5;color:#45536a}.maker{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start;max-width:900px;margin:auto}.preview-card,.control-card{border-radius:24px;background:#fff;box-shadow:0 18px 45px rgba(4,44,95,.14)}.preview-card{padding:18px}.canvas-wrap{position:relative;width:100%;aspect-ratio:1;overflow:hidden;border-radius:16px;background:linear-gradient(145deg,#e7eff7,#c7d4de);touch-action:none;user-select:none}canvas{position:absolute;inset:0;display:block;width:100%;height:100%}.overlay{pointer-events:none}.control-card{padding:28px}.control-card h2{margin:0 0 8px;font-size:24px;color:var(--blue-dark)}.control-card p{margin:0 0 22px;line-height:1.45;color:#536075}.button{width:100%;cursor:pointer;border:0;border-radius:12px;padding:15px 18px;background:var(--yellow);color:var(--purple);font-size:16px;font-weight:900;text-align:center;transition:transform .15s,filter .15s}.button:hover{transform:translateY(-1px);filter:brightness(.98)}.button.secondary{margin-top:12px;background:var(--blue);color:#fff}input[type=file]{display:none}.adjust{display:none;margin-top:24px}.adjust.show{display:block}label.range-label{display:flex;justify-content:space-between;font-size:13px;font-weight:bold;color:#465873;margin:14px 0 7px}input[type=range]{width:100%;accent-color:var(--blue)}.hint{margin-top:18px!important;font-size:13px}.sample{margin-top:16px;font-size:13px;color:#5c6a7b;text-align:center}.sample button{border:0;background:none;color:var(--blue);text-decoration:underline;cursor:pointer;font:inherit;font-weight:bold}.steps{padding:12px 20px 68px}.steps h2{text-align:center;color:var(--blue-dark);font-size:30px;margin:0 0 28px}.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:auto}.step{border-radius:18px;background:#fff;padding:24px;box-shadow:0 8px 24px rgba(4,44,95,.08);text-align:center}.step b{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;color:var(--purple);background:var(--yellow);font-size:20px;margin-bottom:12px}.step h3{margin:0 0 8px;color:var(--blue-dark);font-size:18px}.step p{margin:0;color:#526077;line-height:1.45}footer{background:var(--blue-dark);color:#fff;padding:22px;text-align:center;font-size:14px}@media(max-width:760px){.hero{padding:24px 16px 44px}.maker{grid-template-columns:1fr;gap:18px}.control-card{padding:22px}.step-grid{grid-template-columns:1fr}.steps{padding:8px 16px 46px}}</style></head><body><main><section class="hero"><div class="wrap"><div class="brand"><span>DEPUTADO FEDERAL</span><span>MARCOS PEREIRA</span><span class="number">1010</span></div><h1>Coloque a campanha no seu avatar</h1><p class="lead">Envie uma foto, ajuste o enquadramento e baixe sua imagem com a máscara de Marcos Pereira Deputado Federal 1010.</p><div class="maker"><div class="preview-card"><div class="canvas-wrap" id="canvasWrap"><canvas id="photoCanvas"></canvas><canvas id="maskCanvas" class="overlay"></canvas></div></div><div class="control-card"><h2>Crie seu avatar</h2><p>Escolha uma foto do seu celular ou computador. Depois, arraste para posicionar e use o controle de zoom.</p><label class="button" for="photoInput">Enviar minha foto</label><input id="photoInput" type="file" accept="image/*"><div class="sample">Quer testar primeiro? <button id="useExample" type="button">Usar foto de exemplo</button></div><div class="adjust" id="adjustments"><label class="range-label" for="zoom"><span>Zoom</span><span id="zoomValue">100%</span></label><input id="zoom" type="range" min="70" max="220" value="100"><button class="button secondary" id="downloadBtn" type="button">Baixar meu avatar</button><button class="button secondary" id="resetBtn" type="button" style="background:#64748b">Centralizar foto</button></div><p class="hint">A imagem é processada apenas no seu dispositivo; ela não é enviada para um servidor.</p></div></div></div></section><section class="steps"><div class="wrap"><h2>É rápido e simples</h2><div class="step-grid"><article class="step"><b>1</b><h3>Envie sua foto</h3><p>Escolha uma imagem da sua galeria ou do computador.</p></article><article class="step"><b>2</b><h3>Ajuste o rosto</h3><p>Arraste a foto e aproxime ou afaste até ficar como desejar.</p></article><article class="step"><b>3</b><h3>Baixe e publique</h3><p>Use o arquivo gerado como foto de perfil nas suas redes sociais.</p></article></div></div></section></main><footer>Marcos Pereira — Deputado Federal 1010</footer><script>(()=>{const size=1080,pc=document.getElementById('photoCanvas'),mc=document.getElementById('maskCanvas'),p=pc.getContext('2d'),m=mc.getContext('2d');[pc,mc].forEach(c=>{c.width=size;c.height=size});const input=document.getElementById('photoInput'),zoom=document.getElementById('zoom'),zv=document.getElementById('zoomValue'),adj=document.getElementById('adjustments'),wrap=document.getElementById('canvasWrap');let photo,mask,base=1,scale=1,x=size/2,y=size/2,sx,sy,ox,oy,drag=false;const maskSrc='/assets/mascara.jpeg',exampleSrc='/assets/foto-exemplo.jpeg';function placeholder(){p.clearRect(0,0,size,size);const g=p.createLinearGradient(0,0,size,size);g.addColorStop(0,'#dce8f1');g.addColorStop(1,'#9eb7cd');p.fillStyle=g;p.fillRect(0,0,size,size);p.fillStyle='rgba(255,255,255,.88)';p.textAlign='center';p.font='700 44px Arial';p.fillText('ENVIE SUA FOTO',size/2,size/2-15);p.font='30px Arial';p.fillText('para criar seu avatar',size/2,size/2+35)}function draw(){if(!photo)return placeholder();p.clearRect(0,0,size,size);p.save();p.translate(x,y);p.scale(scale,scale);p.drawImage(photo,-photo.width/2,-photo.height/2);p.restore()}function reset(){if(!photo)return;base=Math.max(size/photo.width,size/photo.height);scale=base*(+zoom.value/100);x=size/2;y=size/2;draw()}function load(src){const i=new Image();i.onload=()=>{photo=i;zoom.value=100;zv.textContent='100%';adj.classList.add('show');reset()};i.onerror=()=>alert('A foto de exemplo ainda não foi adicionada ao projeto.');i.src=src}function pos(e){const r=wrap.getBoundingClientRect();return{x:(e.clientX-r.left)*size/r.width,y:(e.clientY-r.top)*size/r.height}}wrap.addEventListener('pointerdown',e=>{if(!photo)return;drag=true;wrap.setPointerCapture(e.pointerId);const q=pos(e);sx=q.x;sy=q.y;ox=x;oy=y});wrap.addEventListener('pointermove',e=>{if(!drag)return;const q=pos(e);x=ox+q.x-sx;y=oy+q.y-sy;draw()});wrap.addEventListener('pointerup',()=>drag=false);input.onchange=e=>{const f=e.target.files[0];if(f)load(URL.createObjectURL(f))};document.getElementById('useExample').onclick=()=>load(exampleSrc);zoom.oninput=()=>{zv.textContent=zoom.value+'%';if(photo){const old=scale;scale=base*(+zoom.value/100);const f=scale/old;x=size/2+(x-size/2)*f;y=size/2+(y-size/2)*f;draw()}};document.getElementById('resetBtn').onclick=reset;document.getElementById('downloadBtn').onclick=()=>{if(!photo)return;const o=document.createElement('canvas');o.width=size;o.height=size;const c=o.getContext('2d');c.drawImage(pc,0,0);c.drawImage(mc,0,0);const a=document.createElement('a');a.download='meu-avatar-marcos-pereira-1010.png';a.href=o.toDataURL('image/png');a.click()};const mi=new Image();mi.onload=()=>{mask=mi;m.drawImage(mask,0,0,size,size)};mi.src=maskSrc;placeholder()})();</script></body></html>
-<!-- redeploy -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#063d80">
+  <title>Meu avatar | Marcos Pereira 1010</title>
+
+  <meta property="og:title" content="Marcos Pereira 1010 — Crie seu Avatar de Campanha">
+  <meta property="og:description" content="Envie sua foto e baixe seu avatar com a máscara Eu Voto Marcos Pereira 1010.">
+  <meta property="og:image" content="./assets/foto-exemplo.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root {
+      --blue: #063d80;
+      --blue-dark: #032b60;
+      --yellow: #ffe800;
+      --purple: #25177d;
+      --ink: #11213b;
+      --muted: #45536a;
+      --bg-soft: #edf6fd;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft) 100%);
+    }
+
+    .hero {
+      padding: 32px 20px 64px;
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: min(1120px, 100%);
+      margin: auto;
+    }
+
+    .brand {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 15px;
+      letter-spacing: 0.7px;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    .brand .number {
+      color: var(--purple);
+      background: var(--yellow);
+      padding: 6px 12px;
+      transform: skew(-8deg);
+      font-size: 21px;
+      line-height: 1;
+      display: inline-block;
+    }
+
+    h1 {
+      max-width: 810px;
+      margin: 32px auto 14px;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.03;
+      text-align: center;
+      color: var(--blue-dark);
+      letter-spacing: -1.8px;
+    }
+
+    .lead {
+      max-width: 650px;
+      margin: 0 auto 32px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .maker {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 28px;
+      align-items: start;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .preview-card,
+    .control-card {
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 18px 45px rgba(4, 44, 95, 0.14);
+    }
+
+    .preview-card {
+      padding: 18px;
+    }
+
+    .canvas-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 16px;
+      background: linear-gradient(145deg, #e7eff7, #c7d4de);
+      touch-action: none;
+      user-select: none;
+    }
+
+    canvas {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .overlay {
+      pointer-events: none;
+    }
+
+    .control-card {
+      padding: 28px;
+    }
+
+    .control-card h2 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--blue-dark);
+    }
+
+    .control-card p {
+      margin: 0 0 22px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+
+    .field input[type="file"],
+    .field input[type="range"] {
+      width: 100%;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      appearance: none;
+      border: 0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(6, 61, 128, 0.24);
+    }
+
+    .btn-secondary {
+      background: #eef4fb;
+      color: var(--blue-dark);
+    }
+
+    .tips {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #f6f9fd;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px) {
+      .maker {
+        grid-template-columns: 1fr;
+      }
+
+      .control-card {
+        order: -1;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero">
+    <div class="wrap">
+      <div class="brand">
+        <span>EU VOTO</span>
+        <span>MARCOS PEREIRA</span>
+        <span class="number">1010</span>
+      </div>
+
+      <h1>Crie seu avatar com a máscara da campanha</h1>
+      <p class="lead">
+        Envie sua foto, ajuste a posição e baixe a imagem pronta com a sobreposição oficial.
+      </p>
+
+      <section class="maker">
+        <div class="preview-card">
+          <div class="canvas-wrap" id="stage">
+            <canvas id="photoCanvas"></canvas>
+            <canvas id="overlayCanvas" class="overlay"></canvas>
+          </div>
+          <p class="footer-note">Arraste a foto dentro da área para posicionar melhor.</p>
+        </div>
+
+        <aside class="control-card">
+          <h2>Monte sua imagem</h2>
+          <p>Use uma foto nítida. Depois ajuste o zoom e baixe o resultado no seu celular ou computador.</p>
+
+          <div class="field">
+            <label for="upload">Escolher foto</label>
+            <input id="upload" type="file" accept="image/*">
+          </div>
+
+          <div class="field">
+            <label for="zoom">Zoom da foto</label>
+            <input id="zoom" type="range" min="0.6" max="2.5" step="0.01" value="1">
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="downloadBtn" type="button">Baixar avatar</button>
+            <button class="btn-secondary" id="resetBtn" type="button">Reiniciar ajuste</button>
+          </div>
+
+          <div class="tips">
+            A máscara precisa estar em <strong>PNG</strong> com transparência no arquivo
+            <code>./assets/mascara.png</code>.
+            <br>
+            A foto de exemplo fica em <code>./assets/foto-exemplo.jpeg</code>.
+          </div>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const photoCanvas = document.getElementById("photoCanvas");
+    const overlayCanvas = document.getElementById("overlayCanvas");
+    const photoCtx = photoCanvas.getContext("2d");
+    const overlayCtx = overlayCanvas.getContext("2d");
+
+    const uploadInput = document.getElementById("upload");
+    const zoomInput = document.getElementById("zoom");
+    const downloadBtn = document.getElementById("downloadBtn");
+    const resetBtn = document.getElementById("resetBtn");
+    const stage = document.getElementById("stage");
+
+    const photoImg = new Image();
+    const overlayImg = new Image();
+
+    let canvasSize = 1080;
+    let dragging = false;
+    let startX = 0;
+    let startY = 0;
+    let imageOffsetX = 0;
+    let imageOffsetY = 0;
+    let lastOffsetX = 0;
+    let lastOffsetY = 0;
+    let scale = 1;
+
+    function fitCanvasToStage() {
+      const rect = stage.getBoundingClientRect();
+      const size = Math.max(320, Math.floor(rect.width));
+      photoCanvas.width = canvasSize;
+      photoCanvas.height = canvasSize;
+      overlayCanvas.width = canvasSize;
+      overlayCanvas.height = canvasSize;
+
+      photoCanvas.style.width = size + "px";
+      photoCanvas.style.height = size + "px";
+      overlayCanvas.style.width = size + "px";
+      overlayCanvas.style.height = size + "px";
+
+      drawAll();
+    }
+
+    function drawPhoto() {
+      photoCtx.clearRect(0, 0, canvasSize, canvasSize);
+
+      if (!photoImg.complete || !photoImg.naturalWidth) {
+        photoCtx.fillStyle = "#d9e4ef";
+        photoCtx.fillRect(0, 0, canvasSize, canvasSize);
+        return;
+      }
+
+      const imgRatio = photoImg.naturalWidth / photoImg.naturalHeight;
+      let drawWidth = canvasSize;
+      let drawHeight = canvasSize;
+
+      if (imgRatio > 1) {
+        drawHeight = canvasSize;
+        drawWidth = drawHeight * imgRatio;
+      } else {
+        drawWidth = canvasSize;
+        drawHeight = drawWidth / imgRatio;
+      }
+
+      drawWidth *= scale;
+      drawHeight *= scale;
+
+      const x = (canvasSize - drawWidth) / 2 + imageOffsetX;
+      const y = (canvasSize - drawHeight) / 2 + imageOffsetY;
+
+      photoCtx.drawImage(photoImg, x, y, drawWidth, drawHeight);
+    }
+
+    function drawOverlay() {
+      overlayCtx.clearRect(0, 0, canvasSize, canvasSize);
+
+      if (overlayImg.complete && overlayImg.naturalWidth) {
+        overlayCtx.drawImage(overlayImg, 0, 0, canvasSize, canvasSize);
+      }
+    }
+
+    function drawAll() {
+      drawPhoto();
+      drawOverlay();
+    }
+
+    function resetAdjust() {
+      scale = 1;
+      zoomInput.value = "1";
+      imageOffsetX = 0;
+      imageOffsetY = 0;
+      lastOffsetX = 0;
+      lastOffsetY = 0;
+      drawAll();
+    }
+
+    function loadUserImage(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        photoImg.onload = () => {
+          resetAdjust();
+          drawAll();
+        };
+        photoImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function downloadResult() {
+      const exportCanvas = document.createElement("canvas");
+      exportCanvas.width = canvasSize;
+      exportCanvas.height = canvasSize;
+      const exportCtx = exportCanvas.getContext("2d");
+
+      exportCtx.drawImage(photoCanvas, 0, 0);
+      exportCtx.drawImage(overlayCanvas, 0, 0);
+
+      const link = document.createElement("a");
+      link.href = exportCanvas.toDataURL("image/png");
+      link.download = "avatar-marcos-pereira-1010.png";
+      link.click();
+    }
+
+    function pointerPosition(event) {
+      const rect = stage.getBoundingClientRect();
+      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
+      const clientY = event.touches ? event.touches[0].clientY : event.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    }
+
+    stage.addEventListener("mousedown", event => {
+      dragging = true;
+      const pos = pointerPosition(event);
+      startX = pos.x;
+      startY = pos.y;
+    });
+
+    stage.addEventListener("mousemove", event => {
+      if (!dragging) return;
+      const pos = pointerPosition(event);
+      imageOffsetX = lastOffsetX + ((pos.x - startX) * canvasSize / stage.clientWidth);
+      imageOffsetY = lastOffsetY + ((pos.y - startY) * canvasSize / stage.clientHeight);
+      drawAll();
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!dragging) return;
+      dragging = false;
+      lastOffsetX = imageOffsetX;
+      lastOffsetY = imageOffsetY;
+    });
+
+    stage.addEventListener("touchstart", event => {
+      dragging = true;
+      const pos = pointerPosition(event);
+      startX = pos.x;
+      startY = pos.y;
+    }, { passive: true });
+
+    stage.addEventListener("touchmove", event => {
+      if (!dragging) return;
+      const pos = pointerPosition(event);
+      imageOffsetX = lastOffsetX + ((pos.x - startX) * canvasSize / stage.clientWidth);
+      imageOffsetY = lastOffsetY + ((pos.y - startY) * canvasSize / stage.clientHeight);
+      drawAll();
+    }, { passive: true });
+
+    window.addEventListener("touchend", () => {
+      if (!dragging) return;
+      dragging = false;
+      lastOffsetX = imageOffsetX;
+      lastOffsetY = imageOffsetY;
+    });
+
+    zoomInput.addEventListener("input", () => {
+      scale = Number(zoomInput.value);
+      drawAll();
+    });
+
+    uploadInput.addEventListener("change", event => {
+      const file = event.target.files && event.target.files[0];
+      if (file) loadUserImage(file);
+    });
+
+    downloadBtn.addEventListener("click", downloadResult);
+    resetBtn.addEventListener("click", resetAdjust);
+    window.addEventListener("resize", fitCanvasToStage);
+
+    overlayImg.onload = () => {
+      drawOverlay();
+    };
+
+    photoImg.onload = () => {
+      drawPhoto();
+    };
+
+    photoImg.src = "./assets/foto-exemplo.jpeg";
+    overlayImg.src = "./assets/mascara.png";
+
+    fitCanvasToStage();
+  </script>
+</body>
+</html>

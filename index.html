@@ -1,149 +1,122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#063d80">
-  <title>Meu avatar | Marcos Pereira 1010</title>
-
-  <meta property="og:title" content="Marcos Pereira 1010 — Crie seu Avatar de Campanha">
-  <meta property="og:description" content="Envie sua foto e baixe seu avatar com a máscara Eu Voto Marcos Pereira 1010.">
-  <meta property="og:image" content="./assets/foto-exemplo.jpeg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avatar Marcos Pereira 1010</title>
+  <meta name="description" content="Crie seu avatar com a máscara da campanha Marcos Pereira 1010." />
   <style>
-    :root {
-      --blue: #063d80;
-      --blue-dark: #032b60;
-      --yellow: #ffe800;
-      --purple: #25177d;
-      --ink: #11213b;
-      --muted: #45536a;
-      --bg-soft: #edf6fd;
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
       font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft) 100%);
+      background: linear-gradient(180deg, #f3f8ff 0%, #dfeeff 100%);
+      min-height: 100vh;
+      color: #0e2b57;
     }
 
-    .hero {
-      padding: 32px 20px 64px;
-      overflow: hidden;
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
     }
 
-    .wrap {
-      width: min(1120px, 100%);
-      margin: auto;
-    }
-
-    .brand {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      color: var(--blue);
-      font-weight: 900;
-      font-size: 15px;
-      letter-spacing: 0.7px;
+    .header {
       text-align: center;
-      flex-wrap: wrap;
+      margin-bottom: 28px;
     }
 
-    .brand .number {
-      color: var(--purple);
-      background: var(--yellow);
-      padding: 6px 12px;
-      transform: skew(-8deg);
-      font-size: 21px;
-      line-height: 1;
+    .badge {
       display: inline-block;
+      background: #ffe600;
+      color: #1d1976;
+      font-weight: 900;
+      font-size: 18px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
     }
 
     h1 {
-      max-width: 810px;
-      margin: 32px auto 14px;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.03;
-      text-align: center;
-      color: var(--blue-dark);
-      letter-spacing: -1.8px;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      color: #063d80;
     }
 
-    .lead {
-      max-width: 650px;
-      margin: 0 auto 32px;
-      text-align: center;
+    .subtitle {
+      max-width: 680px;
+      margin: 0 auto;
       font-size: 18px;
       line-height: 1.5;
-      color: var(--muted);
+      color: #35507c;
     }
 
-    .maker {
+    .grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 340px;
-      gap: 28px;
+      gap: 24px;
       align-items: start;
-      max-width: 900px;
-      margin: auto;
+      margin-top: 32px;
     }
 
-    .preview-card,
-    .control-card {
+    .card {
+      background: #ffffff;
       border-radius: 24px;
-      background: #fff;
-      box-shadow: 0 18px 45px rgba(4, 44, 95, 0.14);
+      box-shadow: 0 18px 40px rgba(6, 61, 128, 0.14);
     }
 
     .preview-card {
       padding: 18px;
     }
 
-    .canvas-wrap {
+    .controls-card {
+      padding: 24px;
+    }
+
+    .preview-wrap {
       position: relative;
       width: 100%;
-      aspect-ratio: 1;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
-      border-radius: 16px;
-      background: linear-gradient(145deg, #e7eff7, #c7d4de);
+      border-radius: 18px;
+      background: #dfe8f1;
+      cursor: grab;
       touch-action: none;
-      user-select: none;
+    }
+
+    .preview-wrap:active {
+      cursor: grabbing;
     }
 
     canvas {
       position: absolute;
       inset: 0;
-      display: block;
       width: 100%;
       height: 100%;
+      display: block;
     }
 
-    .overlay {
+    .overlay-canvas {
       pointer-events: none;
     }
 
-    .control-card {
-      padding: 28px;
-    }
-
-    .control-card h2 {
-      margin: 0 0 8px;
+    .controls-card h2 {
       font-size: 24px;
-      color: var(--blue-dark);
+      margin-bottom: 8px;
+      color: #063d80;
     }
 
-    .control-card p {
-      margin: 0 0 22px;
+    .controls-card p {
+      font-size: 15px;
       line-height: 1.5;
-      color: var(--muted);
+      color: #476182;
+      margin-bottom: 20px;
     }
 
     .field {
@@ -152,10 +125,10 @@
 
     .field label {
       display: block;
-      margin-bottom: 8px;
       font-size: 14px;
       font-weight: 700;
-      color: var(--blue-dark);
+      margin-bottom: 8px;
+      color: #12366b;
     }
 
     .field input[type="file"],
@@ -163,126 +136,112 @@
       width: 100%;
     }
 
-    .actions {
+    .buttons {
       display: grid;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 20px;
     }
 
     button {
-      appearance: none;
-      border: 0;
+      border: none;
       border-radius: 14px;
       padding: 14px 16px;
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
     button:hover {
       transform: translateY(-1px);
     }
 
-    button:active {
-      transform: translateY(0);
+    .primary {
+      background: #063d80;
+      color: white;
     }
 
-    .btn-primary {
-      background: var(--blue);
-      color: #fff;
-      box-shadow: 0 10px 24px rgba(6, 61, 128, 0.24);
-    }
-
-    .btn-secondary {
+    .secondary {
       background: #eef4fb;
-      color: var(--blue-dark);
+      color: #063d80;
     }
 
-    .tips {
+    .tip {
       margin-top: 18px;
-      padding: 14px 16px;
+      background: #f4f8fd;
       border-radius: 14px;
-      background: #f6f9fd;
-      color: var(--muted);
+      padding: 14px;
       font-size: 14px;
       line-height: 1.5;
+      color: #48627f;
     }
 
-    .footer-note {
+    .note {
       text-align: center;
-      margin-top: 18px;
-      color: var(--muted);
       font-size: 13px;
+      color: #57708d;
+      margin-top: 14px;
     }
 
     @media (max-width: 860px) {
-      .maker {
+      .grid {
         grid-template-columns: 1fr;
       }
 
-      .control-card {
+      .controls-card {
         order: -1;
-      }
-
-      h1 {
-        letter-spacing: -1px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="hero">
-    <div class="wrap">
-      <div class="brand">
-        <span>EU VOTO</span>
-        <span>MARCOS PEREIRA</span>
-        <span class="number">1010</span>
+  <div class="container">
+    <header class="header">
+      <div class="badge">EU VOTO MARCOS PEREIRA 1010</div>
+      <h1>Crie seu avatar com a máscara da campanha</h1>
+      <p class="subtitle">
+        Envie sua foto, ajuste a posição e o zoom, depois baixe a imagem pronta para usar nas redes sociais.
+      </p>
+    </header>
+
+    <section class="grid">
+      <div class="card preview-card">
+        <div class="preview-wrap" id="previewWrap">
+          <canvas id="photoCanvas"></canvas>
+          <canvas id="overlayCanvas" class="overlay-canvas"></canvas>
+        </div>
+        <div class="note">Arraste a foto para posicionar melhor dentro da moldura.</div>
       </div>
 
-      <h1>Crie seu avatar com a máscara da campanha</h1>
-      <p class="lead">
-        Envie sua foto, ajuste a posição e baixe a imagem pronta com a sobreposição oficial.
-      </p>
+      <aside class="card controls-card">
+        <h2>Montar avatar</h2>
+        <p>
+          A foto de exemplo carrega automaticamente. Você pode trocar pela sua e baixar o resultado final em PNG.
+        </p>
 
-      <section class="maker">
-        <div class="preview-card">
-          <div class="canvas-wrap" id="stage">
-            <canvas id="photoCanvas"></canvas>
-            <canvas id="overlayCanvas" class="overlay"></canvas>
-          </div>
-          <p class="footer-note">Arraste a foto dentro da área para posicionar melhor.</p>
+        <div class="field">
+          <label for="uploadInput">Escolher foto</label>
+          <input id="uploadInput" type="file" accept="image/*" />
         </div>
 
-        <aside class="control-card">
-          <h2>Monte sua imagem</h2>
-          <p>Use uma foto nítida. Depois ajuste o zoom e baixe o resultado no seu celular ou computador.</p>
+        <div class="field">
+          <label for="zoomInput">Zoom</label>
+          <input id="zoomInput" type="range" min="0.6" max="2.5" step="0.01" value="1" />
+        </div>
 
-          <div class="field">
-            <label for="upload">Escolher foto</label>
-            <input id="upload" type="file" accept="image/*">
-          </div>
+        <div class="buttons">
+          <button class="primary" id="downloadBtn" type="button">Baixar avatar</button>
+          <button class="secondary" id="resetBtn" type="button">Reiniciar ajuste</button>
+        </div>
 
-          <div class="field">
-            <label for="zoom">Zoom da foto</label>
-            <input id="zoom" type="range" min="0.6" max="2.5" step="0.01" value="1">
-          </div>
-
-          <div class="actions">
-            <button class="btn-primary" id="downloadBtn" type="button">Baixar avatar</button>
-            <button class="btn-secondary" id="resetBtn" type="button">Reiniciar ajuste</button>
-          </div>
-
-          <div class="tips">
-            A máscara precisa estar em <strong>PNG</strong> com transparência no arquivo
-            <code>./assets/mascara.png</code>.
-            <br>
-            A foto de exemplo fica em <code>./assets/foto-exemplo.jpeg</code>.
-          </div>
-        </aside>
-      </section>
-    </div>
-  </main>
+        <div class="tip">
+          Arquivos esperados na pasta <strong>assets</strong>:<br>
+          <code>foto-exemplo.jpeg</code><br>
+          <code>mascara.png</code>
+        </div>
+      </aside>
+    </section>
+  </div>
 
   <script>
     const photoCanvas = document.getElementById("photoCanvas");
@@ -290,209 +249,171 @@
     const photoCtx = photoCanvas.getContext("2d");
     const overlayCtx = overlayCanvas.getContext("2d");
 
-    const uploadInput = document.getElementById("upload");
-    const zoomInput = document.getElementById("zoom");
+    const previewWrap = document.getElementById("previewWrap");
+    const uploadInput = document.getElementById("uploadInput");
+    const zoomInput = document.getElementById("zoomInput");
     const downloadBtn = document.getElementById("downloadBtn");
     const resetBtn = document.getElementById("resetBtn");
-    const stage = document.getElementById("stage");
+
+    const baseSize = 1080;
 
     const photoImg = new Image();
     const overlayImg = new Image();
 
-    let canvasSize = 1080;
-    let dragging = false;
-    let startX = 0;
-    let startY = 0;
-    let imageOffsetX = 0;
-    let imageOffsetY = 0;
-    let lastOffsetX = 0;
-    let lastOffsetY = 0;
     let scale = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    let savedOffsetX = 0;
+    let savedOffsetY = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
 
-    function fitCanvasToStage() {
-      const rect = stage.getBoundingClientRect();
-      const size = Math.max(320, Math.floor(rect.width));
-      photoCanvas.width = canvasSize;
-      photoCanvas.height = canvasSize;
-      overlayCanvas.width = canvasSize;
-      overlayCanvas.height = canvasSize;
+    function setupCanvas() {
+      photoCanvas.width = baseSize;
+      photoCanvas.height = baseSize;
+      overlayCanvas.width = baseSize;
+      overlayCanvas.height = baseSize;
+      render();
+    }
 
-      photoCanvas.style.width = size + "px";
-      photoCanvas.style.height = size + "px";
-      overlayCanvas.style.width = size + "px";
-      overlayCanvas.style.height = size + "px";
-
-      drawAll();
+    function renderBackground() {
+      photoCtx.clearRect(0, 0, baseSize, baseSize);
+      photoCtx.fillStyle = "#dfe8f1";
+      photoCtx.fillRect(0, 0, baseSize, baseSize);
     }
 
     function drawPhoto() {
-      photoCtx.clearRect(0, 0, canvasSize, canvasSize);
+      renderBackground();
 
-      if (!photoImg.complete || !photoImg.naturalWidth) {
-        photoCtx.fillStyle = "#d9e4ef";
-        photoCtx.fillRect(0, 0, canvasSize, canvasSize);
-        return;
-      }
+      if (!photoImg.complete || !photoImg.naturalWidth) return;
 
       const imgRatio = photoImg.naturalWidth / photoImg.naturalHeight;
-      let drawWidth = canvasSize;
-      let drawHeight = canvasSize;
+      let drawWidth;
+      let drawHeight;
 
       if (imgRatio > 1) {
-        drawHeight = canvasSize;
+        drawHeight = baseSize * scale;
         drawWidth = drawHeight * imgRatio;
       } else {
-        drawWidth = canvasSize;
+        drawWidth = baseSize * scale;
         drawHeight = drawWidth / imgRatio;
       }
 
-      drawWidth *= scale;
-      drawHeight *= scale;
-
-      const x = (canvasSize - drawWidth) / 2 + imageOffsetX;
-      const y = (canvasSize - drawHeight) / 2 + imageOffsetY;
+      const x = (baseSize - drawWidth) / 2 + offsetX;
+      const y = (baseSize - drawHeight) / 2 + offsetY;
 
       photoCtx.drawImage(photoImg, x, y, drawWidth, drawHeight);
     }
 
     function drawOverlay() {
-      overlayCtx.clearRect(0, 0, canvasSize, canvasSize);
-
-      if (overlayImg.complete && overlayImg.naturalWidth) {
-        overlayCtx.drawImage(overlayImg, 0, 0, canvasSize, canvasSize);
-      }
+      overlayCtx.clearRect(0, 0, baseSize, baseSize);
+      if (!overlayImg.complete || !overlayImg.naturalWidth) return;
+      overlayCtx.drawImage(overlayImg, 0, 0, baseSize, baseSize);
     }
 
-    function drawAll() {
+    function render() {
       drawPhoto();
       drawOverlay();
     }
 
-    function resetAdjust() {
+    function resetAdjustments() {
       scale = 1;
+      offsetX = 0;
+      offsetY = 0;
+      savedOffsetX = 0;
+      savedOffsetY = 0;
       zoomInput.value = "1";
-      imageOffsetX = 0;
-      imageOffsetY = 0;
-      lastOffsetX = 0;
-      lastOffsetY = 0;
-      drawAll();
+      render();
     }
 
-    function loadUserImage(file) {
+    function getPointerPosition(event) {
+      const rect = previewWrap.getBoundingClientRect();
+      const point = event.touches ? event.touches[0] : event;
+      return {
+        x: point.clientX - rect.left,
+        y: point.clientY - rect.top
+      };
+    }
+
+    function startDrag(event) {
+      isDragging = true;
+      const pos = getPointerPosition(event);
+      dragStartX = pos.x;
+      dragStartY = pos.y;
+    }
+
+    function moveDrag(event) {
+      if (!isDragging) return;
+
+      const pos = getPointerPosition(event);
+      offsetX = savedOffsetX + ((pos.x - dragStartX) * baseSize / previewWrap.clientWidth);
+      offsetY = savedOffsetY + ((pos.y - dragStartY) * baseSize / previewWrap.clientHeight);
+      render();
+    }
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      savedOffsetX = offsetX;
+      savedOffsetY = offsetY;
+    }
+
+    function loadImageFromFile(file) {
       const reader = new FileReader();
-      reader.onload = e => {
-        photoImg.onload = () => {
-          resetAdjust();
-          drawAll();
+      reader.onload = function(e) {
+        photoImg.onload = function() {
+          resetAdjustments();
+          render();
         };
         photoImg.src = e.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-      function downloadResult() {
-        const exportCanvas = document.createElement("canvas");
-        exportCanvas.width = canvasSize;
-        exportCanvas.height = canvasSize;
-        const exportCtx = exportCanvas.getContext("2d");
+    function downloadAvatar() {
+      const finalCanvas = document.createElement("canvas");
+      finalCanvas.width = baseSize;
+      finalCanvas.height = baseSize;
+      const finalCtx = finalCanvas.getContext("2d");
 
-        exportCtx.drawImage(photoCanvas, 0, 0);
-        exportCtx.drawImage(overlayCanvas, 0, 0);
+      finalCtx.drawImage(photoCanvas, 0, 0);
+      finalCtx.drawImage(overlayCanvas, 0, 0);
 
-        exportCanvas.toBlob(blob => {
-          if (!blob) return;
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.href = url;
-          link.download = "avatar-marcos-pereira-1010.png";
-          link.rel = "noopener";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          setTimeout(() => URL.revokeObjectURL(url), 4000);
-        }, "image/png");
-      }
-
-    function pointerPosition(event) {
-      const rect = stage.getBoundingClientRect();
-      const clientX = event.touches ? event.touches[0].clientX : event.clientX;
-      const clientY = event.touches ? event.touches[0].clientY : event.clientY;
-      return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
-      };
+      const link = document.createElement("a");
+      link.href = finalCanvas.toDataURL("image/png");
+      link.download = "avatar-marcos-pereira-1010.png";
+      link.click();
     }
 
-    stage.addEventListener("mousedown", event => {
-      dragging = true;
-      const pos = pointerPosition(event);
-      startX = pos.x;
-      startY = pos.y;
+    previewWrap.addEventListener("mousedown", startDrag);
+    previewWrap.addEventListener("mousemove", moveDrag);
+    window.addEventListener("mouseup", endDrag);
+
+    previewWrap.addEventListener("touchstart", startDrag, { passive: true });
+    previewWrap.addEventListener("touchmove", moveDrag, { passive: true });
+    window.addEventListener("touchend", endDrag);
+
+    zoomInput.addEventListener("input", function() {
+      scale = Number(this.value);
+      render();
     });
 
-    stage.addEventListener("mousemove", event => {
-      if (!dragging) return;
-      const pos = pointerPosition(event);
-      imageOffsetX = lastOffsetX + ((pos.x - startX) * canvasSize / stage.clientWidth);
-      imageOffsetY = lastOffsetY + ((pos.y - startY) * canvasSize / stage.clientHeight);
-      drawAll();
-    });
-
-    window.addEventListener("mouseup", () => {
-      if (!dragging) return;
-      dragging = false;
-      lastOffsetX = imageOffsetX;
-      lastOffsetY = imageOffsetY;
-    });
-
-    stage.addEventListener("touchstart", event => {
-      dragging = true;
-      const pos = pointerPosition(event);
-      startX = pos.x;
-      startY = pos.y;
-    }, { passive: true });
-
-    stage.addEventListener("touchmove", event => {
-      if (!dragging) return;
-      const pos = pointerPosition(event);
-      imageOffsetX = lastOffsetX + ((pos.x - startX) * canvasSize / stage.clientWidth);
-      imageOffsetY = lastOffsetY + ((pos.y - startY) * canvasSize / stage.clientHeight);
-      drawAll();
-    }, { passive: true });
-
-    window.addEventListener("touchend", () => {
-      if (!dragging) return;
-      dragging = false;
-      lastOffsetX = imageOffsetX;
-      lastOffsetY = imageOffsetY;
-    });
-
-    zoomInput.addEventListener("input", () => {
-      scale = Number(zoomInput.value);
-      drawAll();
-    });
-
-    uploadInput.addEventListener("change", event => {
+    uploadInput.addEventListener("change", function(event) {
       const file = event.target.files && event.target.files[0];
-      if (file) loadUserImage(file);
+      if (file) loadImageFromFile(file);
     });
 
-    downloadBtn.addEventListener("click", downloadResult);
-    resetBtn.addEventListener("click", resetAdjust);
-    window.addEventListener("resize", fitCanvasToStage);
+    resetBtn.addEventListener("click", resetAdjustments);
+    downloadBtn.addEventListener("click", downloadAvatar);
 
-    overlayImg.onload = () => {
-      drawOverlay();
-    };
+    overlayImg.onload = render;
+    photoImg.onload = render;
 
-    photoImg.onload = () => {
-      drawPhoto();
-    };
+    setupCanvas();
 
     photoImg.src = "./assets/foto-exemplo.jpeg";
-        overlayImg.src = "./assets/mascara.jpeg";
-    fitCanvasToStage();
-      // redeploy fix 
-          </script>
+    overlayImg.src = "./assets/mascara.png";
+  </script>
 </body>
 </html>

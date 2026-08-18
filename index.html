@@ -362,20 +362,28 @@
       reader.readAsDataURL(file);
     }
 
-    function downloadAvatar() {
-      const finalCanvas = document.createElement("canvas");
-      finalCanvas.width = baseSize;
-      finalCanvas.height = baseSize;
-      const finalCtx = finalCanvas.getContext("2d");
+function downloadAvatar() {
+  const finalCanvas = document.createElement("canvas");
+  finalCanvas.width = baseSize;
+  finalCanvas.height = baseSize;
+  const finalCtx = finalCanvas.getContext("2d");
 
-      finalCtx.drawImage(photoCanvas, 0, 0);
-      finalCtx.drawImage(overlayCanvas, 0, 0);
+  finalCtx.drawImage(photoCanvas, 0, 0);
+  finalCtx.drawImage(overlayCanvas, 0, 0);
 
-      const link = document.createElement("a");
-      link.href = finalCanvas.toDataURL("image/png");
-      link.download = "avatar-marcos-pereira-1010.png";
-      link.click();
-    }
+  finalCanvas.toBlob(function(blob) {
+    if (!blob) return;
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "avatar-marcos-pereira-1010.png";
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setTimeout(function() { URL.revokeObjectURL(url); }, 4000);
+  }, "image/png");
+}
 
     previewWrap.addEventListener("mousedown", startDrag);
     previewWrap.addEventListener("mousemove", moveDrag);
@@ -404,7 +412,7 @@
     setupCanvas();
 
     photoImg.src = "./assets/foto-exemplo.jpeg";
-    overlayImg.src = "./assets/mascara.png";
+    overlayImg.src = "./assets/mascara.jpeg";
   </script>
 </body>
 </html>
